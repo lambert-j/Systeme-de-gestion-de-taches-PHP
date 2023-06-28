@@ -38,6 +38,7 @@ fclose($fp);
 }
 $str = file_get_contents("data.txt");
 $cookie = explode("|",$str);
+$id = 0;
  ?>
 
 <table class="table table-dark table-striped">
@@ -74,6 +75,17 @@ echo "<tr>
 <td> $cookie[11]</td>
 </tr>";};
  ?>
+ <?php function createTable(){
+  if($cookie[$id] && $cookie[$id] && $cookie[$id] && $cookie[$id]){
+    echo "<tr>
+    <td> $cookie[$id]</td>
+    <td> $cookie[$id]</td>
+    <td> $cookie[$id]</td>
+    <td> $cookie[$id]</td>
+    </tr>";};
+ return $id + 4;
+}?>
     </tbody>
   </table>
 </body>
+
