@@ -21,38 +21,38 @@ function modify($i){
   $chemin = "data.txt";
   $contenu = file_get_contents($chemin);
   $cookie = explode("|", $contenu);
-echo "<form method='POST' class='col-4'>
-<label for='fname'>Nom:</label><br>
-<input value='{$cookie[$i]}' type='text' id='' name='modName' class='fs-4'><br>
-<label for='lname'>Description:</label><br>
-<input value='{$cookie[$i + 1]}' type='text' id='' name='modDescription' class='fs-4'><br>
-<label for='fname'>Date limite:</label><br>
-<input value='{$cookie[$i + 2]}' type='date' id='' name='modDate' class='fs-4'><br>
-<label for='lname'>Status:</label><br>";
+echo "<form method='POST' class='col-6 mt-5 card'>
+<label for='fname'>Nom:</label>
+<input value='{$cookie[$i]}' type='text' id='' name='modName' class='fs-4'>
+<label for='lname'>Description:</label>
+<input value='{$cookie[$i + 1]}' type='text' id='' name='modDescription' class='fs-4'>
+<label for='fname'>Date limite:</label>
+<input value='{$cookie[$i + 2]}' type='date' id='' name='modDate' class='fs-4'>
+<label for='lname'>Status:</label>";
 if($cookie[$i + 3] ==="Terminé"){
-echo "<input checked='true' type='radio' name='modStatus' value='Terminé'>
-<label for='html'>Terminé</label><br>
-<input type='radio' name='modStatus' value='En attente'>
-<label for='css'>En attente</label><br>
-<input type='radio' name='modStatus' value='Refusé'>
-<label for='css'>Refusé</label><br>";
+echo "<div><input checked='true' type='radio' name='modStatus' value='Terminé'>
+<label for='html'>Terminé</label></div>
+<div><input type='radio' name='modStatus' value='En attente'>
+<label for='css'>En attente</label></div>
+<div><input type='radio' name='modStatus' value='Refusé'>
+<label for='css'>Refusé</label></div>";
 }elseif($cookie[$i + 3] ==="En attente"){
-  echo "<input  type='radio' name='modStatus' value='Terminé'>
-  <label for='html'>Terminé</label><br>
-  <input checked='true' type='radio' name='modStatus' value='En attente'>
-  <label for='css'>En attente</label><br>
-  <input type='radio' name='modStatus' value='Refusé'>
-  <label for='css'>Refusé</label><br>";
+  echo "<div><input  type='radio' name='modStatus' value='Terminé'>
+  <label for='html'>Terminé</label></div>
+  <div><input checked='true' type='radio' name='modStatus' value='En attente'>
+  <label for='css'>En attente</label></div>
+  <div><input type='radio' name='modStatus' value='Refusé'>
+  <label for='css'>Refusé</label></div>";
 }else{
-  echo "<input  type='radio' name='modStatus' value='Terminé'>
-  <label for='html'>Terminé</label><br>
-  <input type='radio' name='modStatus' value='En attente'>
-  <label for='css'>En attente</label><br>
-  <input checked='true' type='radio' name='modStatus' value='Refusé'>
-  <label for='css'>Refusé</label><br>";
+  echo "<div><input  type='radio' name='modStatus' value='Terminé'>
+  <label for='html'>Terminé</label></div>
+  <div><input type='radio' name='modStatus' value='En attente'>
+  <label for='css'>En attente</label></div>
+  <div><input checked='true' type='radio' name='modStatus' value='Refusé'>
+  <label for='css'>Refusé</label></div>";
 };
 echo "<input type='hidden' name='index' value='{$i}'>";
-echo "<input value='Modifier' type='submit' name='modifyDone{$i}' class='btn btn-primary ms-1'></input>";
+echo "<input value='Modifier' type='submit' name='modifyDone{$i}' class='btn btn-primary mb-1'></input>";
 echo "</form>";
 }
 
