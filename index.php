@@ -7,11 +7,8 @@
     />
 <?php require 'functions.php';?>
 
-
-
-    
-    <body class="container">
-<form method="POST" class="mt-5">
+<body class="container">
+<form method="POST" class="mt-5 col-4">
   <label for="fname">Nom:</label><br>
   <input placeholder="Nom" type="text" id="" name="name" class="fs-4"><br>
   <label for="lname">Description:</label><br>
@@ -19,14 +16,19 @@
   <label for="fname">Date limite:</label><br>
   <input placeholder="Date limite" type="date" id="" name="date" class="fs-4"><br>
   <label for="lname">Status:</label><br>
-  <input type="radio" name="status" value="Terminer">
-  <label for="html">Terminer</label><br>
+  <input type="radio" name="status" value="Terminé">
+  <label for="html">Terminé</label><br>
   <input type="radio" name="status" value="En attente">
   <label for="css">En attente</label><br>
   <input type="radio" name="status" value="Refusé">
   <label for="css">Refusé</label><br>
   <input type="submit" value="Enregister">
 </form>
+
+<?php
+
+
+?>
 
 
 <?php 
