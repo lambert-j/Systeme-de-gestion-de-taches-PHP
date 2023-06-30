@@ -21,7 +21,7 @@ function modify($i){
   $chemin = "data.txt";
   $contenu = file_get_contents($chemin);
   $cookie = explode("|", $contenu);
-echo "<form method='POST' class='col-6 mt-5 card'>
+echo "<form method='POST' class='col-6 mt-5 card bg-dark'>
 <label for='fname'>Nom:</label>
 <input value='{$cookie[$i]}' type='text' id='' name='modName' class='fs-4'>
 <label for='lname'>Description:</label>

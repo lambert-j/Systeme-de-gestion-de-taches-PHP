@@ -11,7 +11,7 @@
 <body class="container">
   <section class="row">
  
-<form method="POST" class="mt-5 col-6 card">
+<form method="POST" class="mt-5 col-6 card bg-dark">
   <label for="fname">Nom:</label>
   <input placeholder="Nom" type="text" id="" name="name" class="fs-4">
   <label for="lname">Description:</label>
