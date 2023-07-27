@@ -1,21 +1,57 @@
 
 <?php 
-function createTable(){
-  global $cookie;
-  $totalLignes = count($cookie);
 
-   for ($i = 0; $i < $totalLignes; $i += 4) {
-    if (isset($cookie[$i]) && isset($cookie[$i + 1]) && isset($cookie[$i + 2]) && isset($cookie[$i + 3])){
-      echo "<tr><td> {$cookie[$i]}</td>";
-      echo "<td> {$cookie[$i + 1]}</td>";
-      echo "<td>{$cookie[$i + 2]}</td>";
-      echo "<td> {$cookie[$i + 3]}</td>";
-      echo "<td><form method='post' action=''>";
-      echo "<input type='hidden' name='index' value='{$i}'>";
-      echo "<input value='Modifier' type='submit' name='modify{$i}' class='btn btn-primary ms-1'></input>";
-      echo "<input value='Supprimer' type='submit' name='delete{$i}' class='btn btn-danger ms-1'></input></form></td></tr>";};
-  } ;
+
+
+function createTable(){
+
+  $mysqlConnection = new PDO(
+  'mysql:host=localhost;dbname=acs_todolist;charset=utf8',
+  'root',
+  ''
+);
+$dbname = "acs_to_do_list";
+$recipesStatement = $mysqlConnection->prepare('SELECT * FROM acs_to_do_list');
+$recipesStatement->execute();
+$entries = $recipesStatement->fetchAll();
+$totalLignes = count($entries);
+
+foreach ($entries as $entry){
+for ($i = 0; $i < $totalLignes; $i += 5) {
+  echo "<tr><td> {$entry[$i]}</td>" ;
+  echo "<td> {$entry[$i + 1]}</td>" ;
+  echo "<td>{$entry[$i + 2]}</td>" ;
+  echo "<td> {$entry[$i + 3]}</td>" ;
+  echo "<td> {$entry[$i + 4]}</td>" ;
+  echo "<td><form method='post' action=''>";
+  echo "<input type='hidden' name='index' value='{$i}'>";
+  echo "<input value='Modifier' type='submit' name='modify{$i}' class='btn btn-primary ms-1'></input>";
+  echo "<input value='Supprimer' type='submit' name='delete{$i}' class='btn btn-danger ms-1'></input></form></td></tr>";
+
 }
+}
+
+}
+
+
+
+
+//   global $cookie;
+//   $totalLignes = count($cookie);
+
+
+//    for ($i = 0; $i < $totalLignes; $i += 5) {
+//     if (isset($cookie[$i]) && isset($cookie[$i + 1]) && isset($cookie[$i + 2]) && isset($cookie[$i + 3]) && isset($cookie[$i + 4])){
+//       echo "<tr><td> {$cookie[$i]}</td>";
+//       echo "<td> {$cookie[$i + 1]}</td>";
+//       echo "<td>{$cookie[$i + 2]}</td>";
+//       echo "<td> {$cookie[$i + 3]}</td>";
+//       echo "<td><form method='post' action=''>";
+//       echo "<input type='hidden' name='index' value='{$i}'>";
+//       echo "<input value='Modifier' type='submit' name='modify{$i}' class='btn btn-primary ms-1'></input>";
+//       echo "<input value='Supprimer' type='submit' name='delete{$i}' class='btn btn-danger ms-1'></input></form></td></tr>";};
+//   } ;
+// }
 
 function modify($i){
   $chemin = "data.txt";
@@ -55,7 +91,7 @@ echo "<input type='hidden' name='index' value='{$i}'>";
 echo "<input value='Modifier' type='submit' name='modifyDone{$i}' class='btn btn-primary mb-1'></input>";
 echo "</form>";
 }
-
+// <input if() type='radio' name='modStatus' value='Refusé'>
 function modifyDone($i){
   $chemin = "data.txt";
   $contenu = file_get_contents($chemin);
@@ -96,9 +132,6 @@ function delete($i){
     $contenu_modifie = implode("|", $cookie);
     file_put_contents($chemin, $contenu_modifie);
 }
-
-
-
 
 ?>
 

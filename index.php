@@ -6,6 +6,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css">
+    <?php
+// Souvent on identifie cet objet par la variable $conn ou $db
+
+?>
+
 
 
 <body class="container">
@@ -30,6 +35,7 @@
    <?php require 'functions.php';?>
 
 
+
 <?php 
 if(!empty($_POST['name'])){
   $name = $_POST['name'];
@@ -52,6 +58,7 @@ $id = 0;
 <table class="table table-dark table-striped">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nom</th>
         <th>Description</th>
         <th>Date limite</th>
@@ -61,6 +68,7 @@ $id = 0;
     </thead>
     <tbody>
     <?php createTable();?>
+    
     </tbody>
   </table>  
 </body>
