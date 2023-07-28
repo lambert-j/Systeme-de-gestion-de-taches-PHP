@@ -37,21 +37,21 @@
 
 
 <?php 
+$mysqlConnection = new PDO(
+  'mysql:host=localhost;dbname=acs_todolist;charset=utf8',
+  'root',
+  ''
+);
+
 if(!empty($_POST['name'])){
-  $name = $_POST['name'];
+$nom = $_POST['name'];
 $description = $_POST['description'];
 $date = $_POST['date'];
 $status = $_POST['status'];
-$fp = fopen("data.txt", "a");
-fwrite($fp, $name . "|");
-fwrite($fp, $description . "|");
-fwrite($fp, $date . "|");
-fwrite($fp, $status . "|");
-fclose($fp);
+
+$insertIntoDB = $mysqlConnection->prepare("INSERT INTO acs_to_do_list (nom, description, date_limite, status) VALUES ('$nom', '$description', '$date', '$status');") ;
+$insertIntoDB->execute();
 }
-$str = file_get_contents("data.txt");
-$cookie = explode("|",$str);
-$id = 0;
  ?>
 
 </section>
